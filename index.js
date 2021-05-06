@@ -1,12 +1,19 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import bodyParser from "body-parser";
+import cors from "cors";
 import pinRoute from "./routes/pins.js";
 import userRoute from "./routes/users.js";
 
 const app = express();
 
 dotenv.config();
+
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors());
+
 
 app.use(express.json());
 
